@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <!-- ===== PROPERTIES ===== -->
+    <property name="APP_NAME" value="s3-events-service"/>
+    <property name="LOG_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%X{traceId:-}] [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- ===== APPENDER CONSOLE ===== -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ===== ROOT LOGGER ===== -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- ===== PACKAGE LOGGING ===== -->
+
+    <!-- API (requests, responses, filters) -->
+    <logger name="com.example.s3events.api" level="INFO"/>
+
+    <!-- Application / UseCases -->
+    <logger name="com.example.s3events.application" level="DEBUG"/>
+
+    <!-- Domain (normalmente poco log) -->
+    <logger name="com.example.s3events.domain" level="WARN"/>
+
+    <!-- Infrastructure -->
+    <logger name="com.example.s3events.infrastructure" level="INFO"/>
+
+</configuration>
